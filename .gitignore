@@ -1,0 +1,18 @@
+# ROS 2 workspace artifacts (in case someone builds inside the repo)
+build/
+install/
+log/
+
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+*.egg
+
+# IDE & OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store

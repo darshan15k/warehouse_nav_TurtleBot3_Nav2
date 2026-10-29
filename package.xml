@@ -4,7 +4,7 @@
   <name>warehouse_nav</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="darshan@todo.todo">darshan</maintainer>
+  <maintainer email="darshukr15@gmail.com">darshan_k_r</maintainer>
   <license>TODO: License declaration</license>
 
   <test_depend>ament_copyright</test_depend>

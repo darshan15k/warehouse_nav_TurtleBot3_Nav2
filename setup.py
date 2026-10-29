@@ -19,8 +19,8 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='Darshan',
-    maintainer_email='you@example.com',
+    maintainer='Darshan_K_R',
+    maintainer_email='darshukr15@gmail.com',
     description='TurtleBot3 + Nav2 warehouse navigation demo',
     license='Apache-2.0',
         entry_points={'console_scripts': [

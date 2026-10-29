@@ -14,7 +14,7 @@ An end-to-end autonomous mobile robot (AMR) warehouse logistics simulation built
 
 | Gazebo Warehouse Environment | RViz2 Costmaps & Global/Local Planning |
 | :---: | :---: |
-| ![Gazebo Simulation](<img width="1854" height="1047" alt="Screenshot from 2026-10-30 00-31-47" src="https://github.com/user-attachments/assets/b7d69be2-92b1-4e72-9fe1-ce3deb68a5c8" />) | ![RViz2 Navigation](<img width="1854" height="1047" alt="Screenshot from 2026-10-30 00-31-27" src="https://github.com/user-attachments/assets/fc31f99f-9cd8-4567-8d54-d9a927e01d4e" />) |
+| ![Gazebo Simulation]<img width="1854" height="1047" alt="Screenshot from 2026-10-30 00-31-47" src="https://github.com/user-attachments/assets/b7d69be2-92b1-4e72-9fe1-ce3deb68a5c8" /> | ![RViz2 Navigation]<img width="1854" height="1047" alt="Screenshot from 2026-10-30 00-31-27" src="https://github.com/user-attachments/assets/fc31f99f-9cd8-4567-8d54-d9a927e01d4e" /> |
 
 ---
 

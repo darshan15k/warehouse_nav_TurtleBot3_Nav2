@@ -9,20 +9,12 @@ from geometry_msgs.msg import Twist
 class MultiObstaclePatrol(Node):
     def __init__(self):
         super().__init__('obstacle_patrol')
-
-        # Define each obstacle's patrol configuration:
-        # - name: matches the namespace in gen_world.py (/obstacle_1, etc.)
-        # - axis: 'x' (East-West) or 'y' (North-South)
-        # - span: one-way travel distance in meters from spawn point
-        # - speed: base speed in m/s (vary these per obstacle!)
-        # - start_dir: 1.0 (positive axis) or -1.0 (negative axis)
-        # - vary_speed: True to modulate speed smoothly between 50% and 150%
         self.obstacles = [
             {
                 'name': 'obstacle_1',
                 'axis': 'x',
                 'span': 5.5,          # moves from x = -2.5 to x = +4.0
-                'speed': 0.12,        # medium speed (0.18 m/s)
+                'speed': 0.12,        # medium speed (0.12 m/s)
                 'start_dir': 1.0,
                 'vary_speed': True,
             },
@@ -30,7 +22,7 @@ class MultiObstaclePatrol(Node):
                 'name': 'obstacle_2',
                 'axis': 'y',
                 'span': 5.5,          # moves from y = -1.0 to y = +3.5 in Aisle 1
-                'speed': 0.13,        # slow speed (0.18 m/s)
+                'speed': 0.13,        # slow speed (0.13 m/s)
                 'start_dir': 1.0,
                 'vary_speed': False,
             },
@@ -38,7 +30,7 @@ class MultiObstaclePatrol(Node):
                 'name': 'obstacle_3',
                 'axis': 'y',
                 'span': 5.0,          # moves from y = +3.5 to y = -1.0 in Aisle 2
-                'speed': 0.13,        # fast speed (0.20 m/s)
+                'speed': 0.13,        # fast speed (0.13 m/s)
                 'start_dir': -1.0,
                 'vary_speed': True,
             },

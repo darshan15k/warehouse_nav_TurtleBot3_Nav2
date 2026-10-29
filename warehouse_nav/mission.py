@@ -9,9 +9,9 @@ from nav2_simple_commander.robot_navigator import BasicNavigator, TaskResult
 from rclpy.duration import Duration
 
 # Exact Map-frame coordinates matching warehouse.world zones:
-# - pickup_zone:  (-4.0,  3.0)
-# - dropoff_zone: ( 4.3,  3.0)
-# - home_zone:    (-4.0, -4.0)
+# - pickup_zone:  ( 4.3,  3.0)
+# - dropoff_zone: (-4.0, -4.0)
+# - home_zone:    (-4.0,  3.0)
 WAYPOINTS = [
     ('Pickup',   4.3,  3.0, -math.pi / 2.0),
     ('Drop-off', -4.0, -4.0,  0.0),
@@ -84,8 +84,7 @@ def go(nav: BasicNavigator, name: str, x: float, y: float, yaw: float) -> bool:
 def main():
     rclpy.init()
     nav = BasicNavigator()
-
-    # Ensure sim time is active on the navigator node
+    
     if not nav.has_parameter('use_sim_time'):
         nav.declare_parameter('use_sim_time', True)
     nav.set_parameters([rclpy.parameter.Parameter(

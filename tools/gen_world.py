@@ -70,7 +70,6 @@ def moving_box(name, x, y, color="1 0.4 0 1"):
 GREY, BROWN, WOOD = "0.6 0.6 0.6 1", "0.45 0.3 0.15 1", "0.7 0.5 0.25 1"
 parts = []
 
-# Outer walls
 parts += [
     box("wall_n", 0,  HALF, 2*HALF + WALL_T, WALL_T, WALL_H, GREY),
     box("wall_s", 0, -HALF, 2*HALF + WALL_T, WALL_T, WALL_H, GREY),
@@ -78,18 +77,13 @@ parts += [
     box("wall_w", -HALF, 0, WALL_T, 2*HALF, WALL_H, GREY),
 ]
 
-# Shelves
 shelves = [(-2.0, 1.5, 0.5, 5.0), (0.0, 1.5, 0.5, 5.0),
            (2.0, 1.5, 0.5, 5.0), (3.3, 1.5, 0.5, 5.0)]
 for i, (x, y, sx, sy) in enumerate(shelves, 1):
     parts.append(box(f"shelf_{i}", x, y, sx, sy, 1.0, BROWN))
-
-# Crates and a pillar
 for i, (x, y) in enumerate([(-3.5, -0.5), (1.0, -3.0), (-0.8, -4.0)], 1):
     parts.append(box(f"crate_{i}", x, y, 0.6, 0.6, 0.6, WOOD))
 parts.append(cyl("pillar_1", 4.2, -2.5, 0.3, 1.0, GREY))
-
-# Floor zones (visual only)
 for name, x, y, col in [("pickup_zone", -4.0, 3.0, "0 0.8 0 1"),
                         ("dropoff_zone", 4.3, 3.0, "0.9 0 0 1"),
                         ("home_zone", -4.0, -4.0, "0 0.3 0.9 1")]:

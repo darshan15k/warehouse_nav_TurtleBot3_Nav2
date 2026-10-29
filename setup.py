@@ -23,5 +23,7 @@ setup(
     maintainer_email='you@example.com',
     description='TurtleBot3 + Nav2 warehouse navigation demo',
     license='Apache-2.0',
-    entry_points={'console_scripts': []},
+        entry_points={'console_scripts': [
+        	'obstacle_patrol = warehouse_nav.obstacle_patrol:main',
+    ]},
 )

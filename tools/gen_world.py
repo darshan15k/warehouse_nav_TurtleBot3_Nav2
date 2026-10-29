@@ -24,6 +24,58 @@ def cyl(name, x, y, r, h, color):
           <material><ambient>{color}</ambient><diffuse>{color}</diffuse></material>
         </visual></link></model>"""
 
+def moving_box(name, x, y, color="1 0.4 0 1"):
+    return f"""
+    <model name="{name}"><pose>{x} {y} 0.255 0 0 0</pose>
+      <link name="base_link">
+        <kinematic>false</kinematic>
+        <gravity>true</gravity>
+        <inertial>
+          <mass>20.0</mass>
+          <pose>0 0 -0.20 0 0 0</pose>
+          <inertia>
+            <ixx>10.0</ixx><ixy>0.0</ixy><ixz>0.0</ixz>
+            <iyy>10.0</iyy><iyz>0.0</iyz>
+            <izz>1.0</izz>
+          </inertia>
+        </inertial>
+        <collision name="c">
+          <geometry><box><size>0.35 0.35 0.5</size></box></geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.0</mu>
+                <mu2>0.0</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>1.0</slip1>
+                <slip2>1.0</slip2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <kp>1000000.0</kp>
+                <kd>100.0</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+        </collision>
+        <visual name="v">
+          <geometry><box><size>0.35 0.35 0.5</size></box></geometry>
+          <material><ambient>{color}</ambient><diffuse>{color}</diffuse></material>
+        </visual>
+      </link>
+      <plugin name="{name}_drive" filename="libgazebo_ros_planar_move.so">
+        <ros><namespace>/{name}</namespace></ros>
+        <command_topic>cmd_vel</command_topic>
+        <publish_odom>true</publish_odom>
+        <publish_odom_tf>false</publish_odom_tf>
+        <odometry_Rate>20.0</odometry_Rate>
+        <robot_base_frame>base_link</robot_base_frame>
+      </plugin>
+    </model>"""
+    
 GREY, BROWN, WOOD = "0.6 0.6 0.6 1", "0.45 0.3 0.15 1", "0.7 0.5 0.25 1"
 parts = []
 
@@ -35,7 +87,7 @@ parts += [
     box("wall_w", -HALF, 0, WALL_T, 2*HALF, WALL_H, GREY),
 ]
 
-# Shelves: (x, y, size_x, size_y). Last gap (S3 -> S4) is 0.8 m.
+# Shelves
 shelves = [(-2.0, 1.5, 0.5, 5.0), (0.0, 1.5, 0.5, 5.0),
            (2.0, 1.5, 0.5, 5.0), (3.3, 1.5, 0.5, 5.0)]
 for i, (x, y, sx, sy) in enumerate(shelves, 1):
@@ -52,9 +104,19 @@ for name, x, y, col in [("pickup_zone", -4.0, 3.0, "0 0.8 0 1"),
                         ("home_zone", -4.0, -4.0, "0 0.3 0.9 1")]:
     parts.append(box(name, x, y, 1.2, 1.2, 0.01, col, collide=False, z=0.006))
 
+# Add 3 dynamic obstacles AFTER `parts` is initialized and BEFORE `world` is formatted:
+parts.append(moving_box("obstacle_1", -2.5, -2.0, "1.0 0.4 0.0 1"))  # Orange (South corridor, X-axis)
+parts.append(moving_box("obstacle_2", -1.0, -1.0, "0.8 0.1 0.8 1"))  # Purple (Aisle 1, Y-axis)
+parts.append(moving_box("obstacle_3",  1.0,  3.5, "0.0 0.8 0.8 1"))  # Cyan   (Aisle 2, Y-axis)
+
 world = f"""<?xml version="1.0" ?>
 <sdf version="1.6">
   <world name="warehouse">
+    <physics type="ode">
+      <real_time_update_rate>1000.0</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
     <include><uri>model://ground_plane</uri></include>
     <include><uri>model://sun</uri></include>
     <gui><camera name="user_camera"><pose>0 -9 11 0 0.9 1.5708</pose></camera></gui>

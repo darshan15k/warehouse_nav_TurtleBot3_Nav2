@@ -25,5 +25,6 @@ setup(
     license='Apache-2.0',
         entry_points={'console_scripts': [
         	'obstacle_patrol = warehouse_nav.obstacle_patrol:main',
+        	'mission = warehouse_nav.mission:main',
     ]},
 )

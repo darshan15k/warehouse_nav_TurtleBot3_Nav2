@@ -106,19 +106,10 @@
               <ode>
                 <mu>0.0</mu>
                 <mu2>0.0</mu2>
-                <fdir1>0 0 0</fdir1>
                 <slip1>1.0</slip1>
                 <slip2>1.0</slip2>
               </ode>
             </friction>
-            <contact>
-              <ode>
-                <kp>1000000.0</kp>
-                <kd>100.0</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0.001</min_depth>
-              </ode>
-            </contact>
           </surface>
         </collision>
         <visual name="v">
@@ -155,19 +146,10 @@
               <ode>
                 <mu>0.0</mu>
                 <mu2>0.0</mu2>
-                <fdir1>0 0 0</fdir1>
                 <slip1>1.0</slip1>
                 <slip2>1.0</slip2>
               </ode>
             </friction>
-            <contact>
-              <ode>
-                <kp>1000000.0</kp>
-                <kd>100.0</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0.001</min_depth>
-              </ode>
-            </contact>
           </surface>
         </collision>
         <visual name="v">
@@ -204,19 +186,10 @@
               <ode>
                 <mu>0.0</mu>
                 <mu2>0.0</mu2>
-                <fdir1>0 0 0</fdir1>
                 <slip1>1.0</slip1>
                 <slip2>1.0</slip2>
               </ode>
             </friction>
-            <contact>
-              <ode>
-                <kp>1000000.0</kp>
-                <kd>100.0</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0.001</min_depth>
-              </ode>
-            </contact>
           </surface>
         </collision>
         <visual name="v">

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generates worlds/warehouse.world. Edit the lists below, then re-run."""
+"""Generates worlds/warehouse.world with 3 non-tipping dynamic obstacles."""
 from pathlib import Path
 
 HALF, WALL_T, WALL_H = 5.0, 0.15, 1.0
@@ -46,19 +46,10 @@ def moving_box(name, x, y, color="1 0.4 0 1"):
               <ode>
                 <mu>0.0</mu>
                 <mu2>0.0</mu2>
-                <fdir1>0 0 0</fdir1>
                 <slip1>1.0</slip1>
                 <slip2>1.0</slip2>
               </ode>
             </friction>
-            <contact>
-              <ode>
-                <kp>1000000.0</kp>
-                <kd>100.0</kd>
-                <max_vel>0.01</max_vel>
-                <min_depth>0.001</min_depth>
-              </ode>
-            </contact>
           </surface>
         </collision>
         <visual name="v">
@@ -75,7 +66,7 @@ def moving_box(name, x, y, color="1 0.4 0 1"):
         <robot_base_frame>base_link</robot_base_frame>
       </plugin>
     </model>"""
-    
+
 GREY, BROWN, WOOD = "0.6 0.6 0.6 1", "0.45 0.3 0.15 1", "0.7 0.5 0.25 1"
 parts = []
 
@@ -104,10 +95,10 @@ for name, x, y, col in [("pickup_zone", -4.0, 3.0, "0 0.8 0 1"),
                         ("home_zone", -4.0, -4.0, "0 0.3 0.9 1")]:
     parts.append(box(name, x, y, 1.2, 1.2, 0.01, col, collide=False, z=0.006))
 
-# Add 3 dynamic obstacles AFTER `parts` is initialized and BEFORE `world` is formatted:
-parts.append(moving_box("obstacle_1", -2.5, -2.0, "1.0 0.4 0.0 1"))  # Orange (South corridor, X-axis)
-parts.append(moving_box("obstacle_2", -1.0, -1.0, "0.8 0.1 0.8 1"))  # Purple (Aisle 1, Y-axis)
-parts.append(moving_box("obstacle_3",  1.0,  3.5, "0.0 0.8 0.8 1"))  # Cyan   (Aisle 2, Y-axis)
+# Dynamic obstacles
+parts.append(moving_box("obstacle_1", -2.5, -2.0, "1.0 0.4 0.0 1"))  # Orange
+parts.append(moving_box("obstacle_2", -1.0, -1.0, "0.8 0.1 0.8 1"))  # Purple
+parts.append(moving_box("obstacle_3",  1.0,  3.5, "0.0 0.8 0.8 1"))  # Cyan
 
 world = f"""<?xml version="1.0" ?>
 <sdf version="1.6">
@@ -126,4 +117,4 @@ world = f"""<?xml version="1.0" ?>
 """
 out = Path(__file__).resolve().parent.parent / "worlds" / "warehouse.world"
 out.write_text(world)
-print("wrote", out)
+print("Successfully generated:", out)

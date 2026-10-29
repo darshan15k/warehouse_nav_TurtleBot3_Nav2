@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="warehouse">
+    <include><uri>model://ground_plane</uri></include>
+    <include><uri>model://sun</uri></include>
+    <gui><camera name="user_camera"><pose>0 -9 11 0 0.9 1.5708</pose></camera></gui>
+    
+    <model name="wall_n"><static>true</static><pose>0 5.0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>10.15 0.15 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>10.15 0.15 1.0</size></box></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual></link></model>
+    <model name="wall_s"><static>true</static><pose>0 -5.0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>10.15 0.15 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>10.15 0.15 1.0</size></box></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual></link></model>
+    <model name="wall_e"><static>true</static><pose>5.0 0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.15 10.0 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 10.0 1.0</size></box></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual></link></model>
+    <model name="wall_w"><static>true</static><pose>-5.0 0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.15 10.0 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 10.0 1.0</size></box></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual></link></model>
+    <model name="shelf_1"><static>true</static><pose>-2.0 1.5 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.5 5.0 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 5.0 1.0</size></box></geometry>
+          <material><ambient>0.45 0.3 0.15 1</ambient><diffuse>0.45 0.3 0.15 1</diffuse></material>
+        </visual></link></model>
+    <model name="shelf_2"><static>true</static><pose>0.0 1.5 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.5 5.0 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 5.0 1.0</size></box></geometry>
+          <material><ambient>0.45 0.3 0.15 1</ambient><diffuse>0.45 0.3 0.15 1</diffuse></material>
+        </visual></link></model>
+    <model name="shelf_3"><static>true</static><pose>2.0 1.5 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.5 5.0 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 5.0 1.0</size></box></geometry>
+          <material><ambient>0.45 0.3 0.15 1</ambient><diffuse>0.45 0.3 0.15 1</diffuse></material>
+        </visual></link></model>
+    <model name="shelf_4"><static>true</static><pose>3.3 1.5 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.5 5.0 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 5.0 1.0</size></box></geometry>
+          <material><ambient>0.45 0.3 0.15 1</ambient><diffuse>0.45 0.3 0.15 1</diffuse></material>
+        </visual></link></model>
+    <model name="crate_1"><static>true</static><pose>-3.5 -0.5 0.3 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.6 0.6 0.6</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.6 0.6 0.6</size></box></geometry>
+          <material><ambient>0.7 0.5 0.25 1</ambient><diffuse>0.7 0.5 0.25 1</diffuse></material>
+        </visual></link></model>
+    <model name="crate_2"><static>true</static><pose>1.0 -3.0 0.3 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.6 0.6 0.6</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.6 0.6 0.6</size></box></geometry>
+          <material><ambient>0.7 0.5 0.25 1</ambient><diffuse>0.7 0.5 0.25 1</diffuse></material>
+        </visual></link></model>
+    <model name="crate_3"><static>true</static><pose>-0.8 -4.0 0.3 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.6 0.6 0.6</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.6 0.6 0.6</size></box></geometry>
+          <material><ambient>0.7 0.5 0.25 1</ambient><diffuse>0.7 0.5 0.25 1</diffuse></material>
+        </visual></link></model>
+    <model name="pillar_1"><static>true</static><pose>4.2 -2.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><cylinder><radius>0.3</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.3</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.6 0.6 0.6 1</diffuse></material>
+        </visual></link></model>
+    <model name="pickup_zone"><static>true</static><pose>-4.0 3.0 0.006 0 0 0</pose>
+      <link name="link">
+        <visual name="v"><geometry><box><size>1.2 1.2 0.01</size></box></geometry>
+          <material><ambient>0 0.8 0 1</ambient><diffuse>0 0.8 0 1</diffuse></material>
+        </visual></link></model>
+    <model name="dropoff_zone"><static>true</static><pose>4.3 3.0 0.006 0 0 0</pose>
+      <link name="link">
+        <visual name="v"><geometry><box><size>1.2 1.2 0.01</size></box></geometry>
+          <material><ambient>0.9 0 0 1</ambient><diffuse>0.9 0 0 1</diffuse></material>
+        </visual></link></model>
+    <model name="home_zone"><static>true</static><pose>-4.0 -4.0 0.006 0 0 0</pose>
+      <link name="link">
+        <visual name="v"><geometry><box><size>1.2 1.2 0.01</size></box></geometry>
+          <material><ambient>0 0.3 0.9 1</ambient><diffuse>0 0.3 0.9 1</diffuse></material>
+        </visual></link></model>
+  </world>
+</sdf>
